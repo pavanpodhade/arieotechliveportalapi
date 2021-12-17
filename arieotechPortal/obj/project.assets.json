@@ -6761,19 +6761,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pavan.podhade\\.nuget\\packages\\": {}
+    "C:\\Users\\davinder.kumar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\App\\ArieotechLive\\arieotechPortal\\ArieotechLive.csproj",
+      "projectUniqueName": "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\ArieotechLive.csproj",
       "projectName": "ArieotechLive",
-      "projectPath": "D:\\App\\ArieotechLive\\arieotechPortal\\ArieotechLive.csproj",
-      "packagesPath": "C:\\Users\\pavan.podhade\\.nuget\\packages\\",
-      "outputPath": "D:\\App\\ArieotechLive\\arieotechPortal\\obj\\",
+      "projectPath": "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\ArieotechLive.csproj",
+      "packagesPath": "C:\\Users\\davinder.kumar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pavan.podhade\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\davinder.kumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6888,7 +6888,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   },
