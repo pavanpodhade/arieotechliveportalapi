@@ -1,0 +1,6 @@
+D:\Gaurav_Yerande\Assignments\WebAPI_20211116\WEB_API_PRACTICE\.NET\arieotechPortalASPnetapi-main (1)\arieotechPortalASPnetapi-main\arieotechPortal\obj\Debug\net5.0\WEB_API_PRACTIC.GeneratedMSBuildEditorConfig.editorconfig
+D:\Gaurav_Yerande\Assignments\WebAPI_20211116\WEB_API_PRACTICE\.NET\arieotechPortalASPnetapi-main (1)\arieotechPortalASPnetapi-main\arieotechPortal\obj\Debug\net5.0\WEB_API_PRACTIC.AssemblyInfoInputs.cache
+D:\Gaurav_Yerande\Assignments\WebAPI_20211116\WEB_API_PRACTICE\.NET\arieotechPortalASPnetapi-main (1)\arieotechPortalASPnetapi-main\arieotechPortal\obj\Debug\net5.0\WEB_API_PRACTIC.AssemblyInfo.cs
+D:\Gaurav_Yerande\Assignments\WebAPI_20211116\WEB_API_PRACTICE\.NET\arieotechPortalASPnetapi-main (1)\arieotechPortalASPnetapi-main\arieotechPortal\obj\Debug\net5.0\WEB_API_PRACTIC.csproj.CoreCompileInputs.cache
+D:\Gaurav_Yerande\Assignments\WebAPI_20211116\WEB_API_PRACTICE\.NET\arieotechPortalASPnetapi-main (1)\arieotechPortalASPnetapi-main\arieotechPortal\obj\Debug\net5.0\WEB_API_PRACTIC.MvcApplicationPartsAssemblyInfo.cs
+D:\Gaurav_Yerande\Assignments\WebAPI_20211116\WEB_API_PRACTICE\.NET\arieotechPortalASPnetapi-main (1)\arieotechPortalASPnetapi-main\arieotechPortal\obj\Debug\net5.0\WEB_API_PRACTIC.MvcApplicationPartsAssemblyInfo.cache

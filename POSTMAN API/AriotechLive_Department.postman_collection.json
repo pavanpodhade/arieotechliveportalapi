@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "1a34381a-0515-4d56-a0e0-acee321f0be0",
+		"name": "AriotechLive_Department",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllDepartment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44345/GetAllDepartment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44345",
+					"path": [
+						"GetAllDepartment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDepartmentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44345/GetDepartmentById/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44345",
+					"path": [
+						"GetDepartmentById",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDepartmentByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44345/GetDepartmentByName/ADMIN",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44345",
+					"path": [
+						"GetDepartmentByName",
+						"ADMIN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InsertIntoDepartment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentID\": 0,\r\n  \"departmentName\": \"ADMIN\",\r\n  \"departmentDescription\": \"string\",\r\n  \"departmentHead\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatedDepartment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentID\": 2,\r\n  \"departmentName\": \"ADMIN4\",\r\n  \"departmentDescription\": \"string\",\r\n  \"departmentHead\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44345/api/Department/UpdatedDepartment?DepartmentID=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44345",
+					"path": [
+						"api",
+						"Department",
+						"UpdatedDepartment"
+					],
+					"query": [
+						{
+							"key": "DepartmentID",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEmployeeWithDepartment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44345/GetEmployeeWithDepartment?DepartmentID=2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44345",
+					"path": [
+						"GetEmployeeWithDepartment"
+					],
+					"query": [
+						{
+							"key": "DepartmentID",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeactivateDepartment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44345/api/Department?DepartmentID=17",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44345",
+					"path": [
+						"api",
+						"Department"
+					],
+					"query": [
+						{
+							"key": "DepartmentID",
+							"value": "17"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
