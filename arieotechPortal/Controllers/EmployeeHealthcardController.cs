@@ -12,11 +12,12 @@ namespace ArieotechLive.Controllers
     [ApiController]
     public class EmployeeHealthcardController : Controller
     {
+
         private readonly IEmployeeHealthCardRepository employeeHealthCardRepository;
         private readonly ILoggerManager loggerManager;
         private string message;
 
-        public EmployeeHealthcardController(IEmployeeHealthCardRepository employeeHealthCardRepository,ILoggerManager loggerManager)
+        public EmployeeHealthcardController(IEmployeeHealthCardRepository employeeHealthCardRepository, ILoggerManager loggerManager)
         {
             this.employeeHealthCardRepository = employeeHealthCardRepository;
             this.loggerManager = loggerManager;
@@ -43,7 +44,7 @@ namespace ArieotechLive.Controllers
             }
             return result;
 
-        
+
         }
         //GET EmployeeHealthCard BY EmployeeHealthCard ID
         [HttpGet("/GetEmployeeHealthCardById/{EmployeeHealthCardId}")]
@@ -66,9 +67,30 @@ namespace ArieotechLive.Controllers
             }
             return result;
         }
+        //Get employee health card by id
+        [HttpGet("/GetEmployeeHealthCardByRelation/employee/{Relation}")]
+        public ActionResult GetEmployeeHealthCardByRelation(string Relation)
+        {
+            ActionResult result;
+
+            try
+            {
+                this.loggerManager.LogInfo(string.Format("Get all employee health card by Relation is called,id:{0}", Relation));
+                EmployeeHealthCard employeeHealthCard = new EmployeeHealthCard();
+
+                employeeHealthCard = this.employeeHealthCardRepository.GetEmployeeHealthCardByRelation(Relation);
+                result = Ok(employeeHealthCard);
+            }
+            catch (Exception ex)
+            {
+                result = new StatusCodeResult(401);
+                this.loggerManager.LogError(string.Format("EmployeeHealthCard: {0} is not allowed for this operation get EmployeeHealthCardId by Relation", Relation));
+            }
+            return result;
+        }
         //GET EmployeeHealthCard By Name
         [HttpGet("/GetEmployeeHealthCardByName")]
-        public ActionResult GetEmployeeHealthCardByIName(string EmployeeHealthCardtName)
+        public ActionResult GetDepartmentByDepartmentName(string EmployeeHealthCardtName)
         {
             ActionResult result;
 
@@ -97,19 +119,31 @@ namespace ArieotechLive.Controllers
             try
             {
                 this.loggerManager.LogInfo(string.Format("Insert employeehealthcard called,employeehealthcardName:{0}", EmployeeHealthCardInsert.First_Name));
-                
+                EmployeeHealthCard employeehealthcardFromDB = this.employeeHealthCardRepository.GetEmployeeHCByAdharCard_No(EmployeeHealthCardInsert.AdharCard_No);
+                if (employeehealthcardFromDB != null)//to check for duplicate values
+                {
+                    this.loggerManager.LogInfo(string.Format("Adhar number:{0} is already exists", EmployeeHealthCardInsert.AdharCard_No));
+                    var newresult = new
+                    {
+                        message = string.Format("{0} Adhar number is already exists.", EmployeeHealthCardInsert.AdharCard_No)
+                    };
+                    result = Conflict(newresult);
+                }
+                else
+                {
                     this.employeeHealthCardRepository.InsertIntoEmployeeHealthCard(EmployeeHealthCardInsert);
                     result = Ok();
-               
+                }
+
             }
             catch (Exception ex)
             {
-               
+
                 this.loggerManager.LogError(string.Format("This employeehealthcard already exist in the database,employeehealthcard:{0}", EmployeeHealthCardInsert.First_Name));
                 result = new StatusCodeResult(500);
                 ;
             }
-           // message = string.Format("{1} save the record", EmployeeHealthCardInsert.First_Name);
+            // message = string.Format("{1} save the record", EmployeeHealthCardInsert.First_Name);
             return result;
         }
         //UPDATE EmployeeHealthCard
@@ -145,6 +179,27 @@ namespace ArieotechLive.Controllers
             }
             return result;
         }
+        //GET EmployeeHealthCard By adharnumber
+        [HttpGet("/GetEmployeeHCByAdharCard_No/employee/{AdharCard_No}")]
+        public ActionResult GetEmployeeHCByAdharCard_No(string AdharCard_No)
+        {
+            ActionResult result;
+
+            try
+            {
+                this.loggerManager.LogInfo(string.Format("Get all Employeehealthcard by AdharCard_No is called,AdharCard_No:{0}", AdharCard_No));
+                EmployeeHealthCard employeeHealthCard = new EmployeeHealthCard();
+
+                employeeHealthCard = this.employeeHealthCardRepository.GetEmployeeHCByAdharCard_No(AdharCard_No);
+                result = Ok(employeeHealthCard);
+            }
+            catch (Exception ex)
+            {
+                result = new StatusCodeResult(401);
+                this.loggerManager.LogError(string.Format("EmployeeHealthCard: {0} is not allowed for this operation get EmployeeHealthCard by Name", AdharCard_No));
+            }
+            return result;
+        }
         // DEACTIVATE DEPARTMENT
         [HttpPut]
         [Route("/Deletebydeactivate1")]
@@ -165,7 +220,6 @@ namespace ArieotechLive.Controllers
             }
             return result;
         }
-
 
     }
 }
