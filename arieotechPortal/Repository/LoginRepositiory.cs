@@ -24,7 +24,7 @@ namespace ArieotechLive.Repository
             Login login = new Login();
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                login = conn.Query<Login>(" select * from  [ArieotechLive1].[dbo].[Login] (nolock) where Email=@Email", new { Email = Email }).FirstOrDefault();
+                login = conn.Query<Login>(" select * from  [ArieotechLive].[dbo].[Login] (nolock) where Email=@Email", new { Email = Email }).FirstOrDefault();
             }
             return login;
         }
@@ -43,7 +43,7 @@ namespace ArieotechLive.Repository
             Login login = new Login();
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                login = conn.Query<Login>(" select * from  [ArieotechLive1].[dbo].[Login] (nolock) where Password=@Password", new { Password = Password }).FirstOrDefault();
+                login = conn.Query<Login>(" select * from  [ArieotechLive].[dbo].[Login] (nolock) where Password=@Password", new { Password = Password }).FirstOrDefault();
             }
             return login;
             }

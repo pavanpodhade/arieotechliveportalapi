@@ -52,6 +52,8 @@ namespace ArieotechLive.Controllers
                         {
                             Email = user.Email,
                             Token = usertoken,
+                            RoleId = user.RoleId,
+                            IsAuthenticated = true,
                             // RoleId = user.RoleId,
                             // IsAuthenticated = true,
                         };
@@ -78,6 +80,7 @@ namespace ArieotechLive.Controllers
               new Claim(ClaimTypes.Email,user.Email),
              new Claim(ClaimTypes.Role,user.RoleId.ToString()),
              new Claim(ClaimTypes.UserData,user.Id.ToString()),
+
              };
             var jwtToken = new JwtSecurityToken(
                 "ASPL",
