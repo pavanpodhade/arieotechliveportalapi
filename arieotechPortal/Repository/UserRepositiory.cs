@@ -22,7 +22,7 @@ namespace ArieotechLive.Repository
         {
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                conn.Execute("update [ArieotechLive1].[dbo].[User] set PasswordHash=@PasswordHash,PasswordSalt=@PasswordSalt where Id=@Id", new
+                conn.Execute("update [ArieotechLive].[dbo].[User] set PasswordHash=@PasswordHash,PasswordSalt=@PasswordSalt where Id=@Id", new
                 {
                     Id = Id,
                     PasswordHash = user.PasswordHash,
@@ -48,7 +48,7 @@ namespace ArieotechLive.Repository
            
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                user = conn.Query<User>(" select * from [ArieotechLive1].[dbo].[User] where Email=@Email", new { Email = Email }).FirstOrDefault();
+                user = conn.Query<User>(" select * from [ArieotechLive].[dbo].[User] where Email=@Email", new { Email = Email }).FirstOrDefault();
             }
             return user;
         }
@@ -76,6 +76,56 @@ namespace ArieotechLive.Repository
                 {
 
                 }
+         }
+        #region GetUserByID
+        public User GetUserByID(int id)
+        {
+
+            User user = new User();
+
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                user = conn.Query<User>(" select * from [ArieotechLive].[dbo].[User] where Id=@id", new { Id = id }).FirstOrDefault();
             }
+            return user;
+        }
+        #endregion
+        #region UpdateUser
+        public void UpdateUser(User user)
+        {
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                conn.Execute("update [dbo].[User] set Email=@Email,FirstName=@FirstName,LastName=@LastName,Active=@Active,RoleId=@RoleId where Id=@Id", new
+                {
+                    Email = user.Email,
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                   
+                    Active = user.Active,
+                    RoleId = user.RoleId
+
+                }); ;
+
+            }
+        }
+        #endregion
+        #region UpdateUserPassword
+        public void UpdateUserPassword(int id, string passwordsalt, string passwordhash)
+        {
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                conn.Execute("update [dbo].[User] set PasswordHash=@PasswordHash,PasswordSalt=@PasswordSalt where Id=@id", new
+                {
+                    passwordsalt = passwordsalt,
+                    PasswordHash = passwordhash,
+                    id = id
+
+                });
+
+            }
+        }
+
+        #endregion
     }
 }

@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ArieotechLive.Controllers
 {
     [Route("api/Controller")]
     [ApiController]
+    [Authorize]
     public class EmployeeHealthcardController : Controller
     {
         private readonly IEmployeeHealthCardRepository employeeHealthCardRepository;

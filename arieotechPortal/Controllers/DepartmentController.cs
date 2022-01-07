@@ -16,6 +16,7 @@ namespace ArieotechLive.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class DepartmentController : ControllerBase
     {
         private readonly IDepartmentRepository departmentRepository;
@@ -64,6 +65,26 @@ namespace ArieotechLive.Controllers
             {
                 result = new StatusCodeResult(401);
                 this.loggerManager.LogError(string.Format("User: {0} is not allowed for this operation get getdepartment by id", DepartmentId));
+            }
+            return result;
+        }
+        [HttpGet("/GetDepartmentByStatus")]
+        public ActionResult GetDepartmentByStatus(bool ActiveStatus)
+        {
+            ActionResult result;
+            IEnumerable<Department> department = new List<Department>();
+            try
+            {
+               // this.loggerManager.LogInfo(string.Format("Get all department by id is called,id:{0}", ActiveStatus));
+                
+
+                department = this.departmentRepository.GetDepartmentByStatus(ActiveStatus);
+                result = Ok(department);
+            }
+            catch (Exception ex)
+            {
+                result = new StatusCodeResult(401);
+               // this.loggerManager.LogError(string.Format("User: {0} is not allowed for this operation get getdepartment by id", ActiveStatus));
             }
             return result;
         }
@@ -192,7 +213,29 @@ namespace ArieotechLive.Controllers
             }
             return result;
         }
-      
+        #region activateEmployee
+
+        [HttpPut]
+        [Route("activateDepartment")]
+        public ActionResult activateDepartment(int Id)
+        {
+            ActionResult result;
+            try
+            {
+                this.loggerManager.LogInfo(string.Format("activate employee by id is called,id:{0}", Id));
+                this.departmentRepository.activateDepartment(Id);
+                result = new StatusCodeResult(200);
+
+            }
+            catch (Exception e)
+            {
+                this.loggerManager.LogError(string.Format("Action Sustained due to data dependency,id:{0}", Id));
+                result = new StatusCodeResult(401);
+            }
+            return result;
+        }
+        #endregion
+
 
         //GET ALL EmployeeWithDepartment by using JOIN
         [HttpGet]
@@ -214,6 +257,26 @@ namespace ArieotechLive.Controllers
                 result = new StatusCodeResult(500);
             }
             return result;
+        }
+        [HttpGet]
+        [Route("/CountActive")]
+        public ActionResult CountActiveDepartment(bool ActiveStatus)
+        {
+            ActionResult result;
+            try
+            {
+                int count;
+                count=this.departmentRepository.CountActiveDepartment(ActiveStatus);
+                result = Ok(count);
+
+            }
+            catch (Exception e)
+            {
+                //this.loggerManager.LogError(string.Format("Action Sustained due to data dependency,id:{0}", DepartmentID));
+                result = new StatusCodeResult(401);
+            }
+            return result;
+        
         }
     }
 }

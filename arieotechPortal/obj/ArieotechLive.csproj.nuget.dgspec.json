@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\ArieotechLive.csproj": {}
+    "D:\\projects\\GithHubCloneApi\\arieotechPortal\\ArieotechLive.csproj": {}
   },
   "projects": {
-    "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\ArieotechLive.csproj": {
+    "D:\\projects\\GithHubCloneApi\\arieotechPortal\\ArieotechLive.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\ArieotechLive.csproj",
+        "projectUniqueName": "D:\\projects\\GithHubCloneApi\\arieotechPortal\\ArieotechLive.csproj",
         "projectName": "ArieotechLive",
-        "projectPath": "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\ArieotechLive.csproj",
-        "packagesPath": "C:\\Users\\davinder.kumar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\davinder.kumar\\Source\\Repos\\arieotechliveportalapi\\arieotechPortal\\obj\\",
+        "projectPath": "D:\\projects\\GithHubCloneApi\\arieotechPortal\\ArieotechLive.csproj",
+        "packagesPath": "C:\\Users\\priyanka.ghodekar\\.nuget\\packages\\",
+        "outputPath": "D:\\projects\\GithHubCloneApi\\arieotechPortal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\davinder.kumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\priyanka.ghodekar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,6 +55,10 @@
             "Grpc.Core.Api": {
               "target": "Package",
               "version": "[2.42.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.10.1, )"
             },
             "Microsoft.AspNet.WebPages": {
               "target": "Package",
@@ -129,7 +133,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,5 +13,6 @@ namespace ArieotechLive.Model
         public string Relation { get; set; }
         public string AdharCard_No {get;set;}
         public bool ActiveStatus { get; set; }
+        public int id { get; set; }
     }
 }

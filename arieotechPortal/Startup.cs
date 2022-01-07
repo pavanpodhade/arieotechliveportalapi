@@ -57,8 +57,12 @@ namespace arieotechPortal
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<ILoggerManager,LoggerManager>();
             services.AddTransient<IEmployeeHealthCardRepository,EmployeeHealthCardRepository>();
-
-
+            services.AddTransient<IProjectRepository, ProjectRepository>();
+            services.AddTransient<IUserRepositiory, UserRepositiory>();
+            services.AddTransient<ILoginRepositiory, LoginRepositiory>();
+            services.AddTransient<ITimeSheetRepository, TimeSheetRepository>();
+            services.AddTransient<IForgotPasswordHistory, ForgotPasswordHistoryRepository>();
+            services.AddTransient<IUsageActivityRepository, UsageActivityRepository>();
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -1,5 +1,6 @@
 ﻿using ArieotechLive.Model;
 using ArieotechLive.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ namespace ArieotechLive.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LeavesController : ControllerBase
     {
         private readonly ILeavesRepository leavesRepository;

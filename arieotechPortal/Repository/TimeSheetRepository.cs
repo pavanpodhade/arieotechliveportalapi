@@ -36,7 +36,7 @@ namespace ArieotechLive.Repository
             IEnumerable<TimeSheet> timeSheet = new List<TimeSheet>();
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                timeSheet = conn.Query<TimeSheet>("SELECT * FROM [ArieotechLive1].[dbo].[TimeSheet]");
+                timeSheet = conn.Query<TimeSheet>("SELECT * FROM [ArieotechLive].[dbo].[TimeSheet]");
                
             }
             return timeSheet;
@@ -47,7 +47,7 @@ namespace ArieotechLive.Repository
             TimeSheet timesheet = new TimeSheet();
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                timesheet = (TimeSheet)conn.Query<TimeSheet>(string.Format(" select * from [ArieotechLive1].[dbo].[TimeSheet] where EmployeeID ={0}", EmployeeID)).FirstOrDefault();
+                timesheet = (TimeSheet)conn.Query<TimeSheet>(string.Format(" select * from [ArieotechLive].[dbo].[TimeSheet] where EmployeeID ={0}", EmployeeID)).FirstOrDefault();
             }
             return timesheet;
         }
@@ -57,7 +57,7 @@ namespace ArieotechLive.Repository
             TimeSheet timesheet = new TimeSheet();
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
-                timesheet = (TimeSheet)conn.Query<TimeSheet>(string.Format(" select * from [ArieotechLive1].[dbo].[TimeSheet] where Id ={0}", Id)).FirstOrDefault();
+                timesheet = (TimeSheet)conn.Query<TimeSheet>(string.Format(" select * from [ArieotechLive].[dbo].[TimeSheet] where Id ={0}", Id)).FirstOrDefault();
             }
             return timesheet;
         }
@@ -68,7 +68,7 @@ namespace ArieotechLive.Repository
             {
                 using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
                 {
-                    conn.Execute("INSERT INTO  [ArieotechLive1].[dbo].[TimeSheet] VALUES (@Date,@ProjectID,@EmployeeID,@Hours,@Description,@ActiveStatus)", new
+                    conn.Execute("INSERT INTO  [ArieotechLive].[dbo].[TimeSheet] VALUES (@Date,@ProjectID,@EmployeeID,@Hours,@Description,@ActiveStatus)", new
                     {
                
                         Date = timesheetinsert.Date,

@@ -18,6 +18,18 @@ namespace ArieotechLive.Repository
         {
             this.configuration = configuration;
         }
+
+        public void activateEmployee(int Id)
+        {
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                conn.Execute(" UPDATE [dbo].[Employee] SET Active=1 WHERE Id = @Id", new
+                {
+                    id = Id
+                });
+            }
+
+        }
         #region deactivateEmployee
         public void deactivateEmployee(int Id)
         {

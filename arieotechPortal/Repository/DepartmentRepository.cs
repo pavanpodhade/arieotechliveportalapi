@@ -33,14 +33,18 @@ namespace ArieotechLive.Repository
         //GET ALL DEPARTMENT
         public IEnumerable<Department> GetAllDepartment()
         {
+
+
+
             IEnumerable<Department> department = new List<Department>();
+
             using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
             {
                 department = conn.Query<Department>("SELECT * FROM Department");
             }
             return department;
             //IEnumerable<Department> department = new List<Department>();
-            //{
+            //{  IEnumerable<Department> department = new List<Department>();
             //    //departmentID=department.DepartmentID = 1;
             //   // departmentName=department.DepartmentName = "pavn";
 
@@ -51,7 +55,17 @@ namespace ArieotechLive.Repository
 
 
         }
+        public void activateDepartment(int Id)
+        {
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                conn.Execute(" UPDATE [dbo].[Department] SET ActiveStatus=1 WHERE DepartmentId= @Id", new
+                {
+                    id = Id
+                });
+            }
 
+        }
         //GET DEPARTMENT By DEPARTMENT NAME
         public Department GetDepartmentByDepartmentName(string DepartmentName)
         {
@@ -78,6 +92,36 @@ namespace ArieotechLive.Repository
             }
 
             return department;
+        }
+        public IEnumerable<Department> GetDepartmentByStatus(bool ActiveStatus)
+        {
+            IEnumerable<Department> department = new List<Department>();
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                department = conn.Query<Department>("SELECT * FROM [dbo].[Department] Where ActiveStatus=@ActiveStatus", new
+                {
+                    ActiveStatus = ActiveStatus,
+
+                });
+            }
+
+            return department;
+        }
+        public int CountActiveDepartment(bool ActiveStatus)
+        {
+            int count;
+            IEnumerable<Department> empdept = new List<Department>();
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+
+                empdept = conn.Query<Department>("SELECT * from dbo.[Department] where ActiveStatus=@ActiveStatus", new
+                {
+                    ActiveStatus = ActiveStatus,
+                }) ;
+
+            }
+         
+            return empdept.Count();
         }
 
         //GET ALL EmployeeWithDepartment by using JOIN

@@ -15,7 +15,7 @@ namespace ArieotechLive.Controllers
     [Route("api/[controller]")]
     //[Authorize]
     [ApiController]
-   
+   [Authorize]
     public class ProjectController : ControllerBase
     {
         private readonly IProjectRepository projectRepository;

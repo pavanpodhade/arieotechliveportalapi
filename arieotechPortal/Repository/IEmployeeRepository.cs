@@ -12,7 +12,8 @@ namespace ArieotechLive.Repository
         Employee GetEmployeeById(int Id);
         void InsertEmployee(Employee employee);
         Employee GetEmployeeByUserId(int UserId);
-        void deactivateEmployee(int Id);
+        void deactivateEmployee(int Id); 
+        void activateEmployee(int Id);
         void UpdateEmployee(Employee employee, int Id);
       //void ImageUpload(int eventId, string fileName, object userId);
     }

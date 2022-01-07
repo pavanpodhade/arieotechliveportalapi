@@ -1,5 +1,6 @@
 ﻿using ArieotechLive.Model;
 using ArieotechLive.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ namespace ArieotechLive.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TimeSheetController : ControllerBase
     {
         private readonly ITimeSheetRepository timeSheetRepository;

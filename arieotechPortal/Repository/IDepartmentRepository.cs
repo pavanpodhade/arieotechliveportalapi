@@ -19,5 +19,8 @@ namespace ArieotechLive.Repository
         IEnumerable<EmployeeWithDepartment> GetEmployeeWithDepartment(int DepartmentID);
 
         void DeactivateDepartment(int DepartmentID);
+        int CountActiveDepartment(bool ActiveStatus);
+        void activateDepartment(int Id);
+        IEnumerable<Department> GetDepartmentByStatus(bool ActiveStatus);
     }
 }

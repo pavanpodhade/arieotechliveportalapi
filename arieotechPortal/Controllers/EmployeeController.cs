@@ -17,7 +17,7 @@ namespace WEB_API_PRACTICE.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository employeeRepository;
@@ -105,6 +105,28 @@ namespace WEB_API_PRACTICE.Controllers
             {
                 this.loggerManager.LogInfo(string.Format("Deactivate employee by id is called,id:{0}", Id));
                 this.employeeRepository.deactivateEmployee(Id);
+                result = new StatusCodeResult(200);
+
+            }
+            catch (Exception e)
+            {
+                this.loggerManager.LogError(string.Format("Action Sustained due to data dependency,id:{0}", Id));
+                result = new StatusCodeResult(401);
+            }
+            return result;
+        }
+        #endregion
+        #region activateEmployee
+
+        [HttpPut]
+        [Route("activateEmployee")]
+        public ActionResult activateEmployee(int Id)
+        {
+            ActionResult result;
+            try
+            {
+                this.loggerManager.LogInfo(string.Format("activate employee by id is called,id:{0}", Id));
+                this.employeeRepository.activateEmployee(Id);
                 result = new StatusCodeResult(200);
 
             }

@@ -65,13 +65,14 @@ namespace ArieotechLive.Repository
             {
                 using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
                 {
-                    conn.Execute("INSERT INTO EmployeeHealthCard VALUES (@First_Name,@Last_Name,@Relation,@AdharCard_No,@ActiveStatus)", new
+                    conn.Execute("INSERT INTO EmployeeHealthCard VALUES (@First_Name,@Last_Name,@Relation,@AdharCard_No,@ActiveStatus,@id)", new
                     {
                         First_Name = EmployeeHealthCardInsert.First_Name,
                         Last_Name = EmployeeHealthCardInsert.Last_Name,
                         Relation = EmployeeHealthCardInsert.Relation,
                         AdharCard_No = EmployeeHealthCardInsert.AdharCard_No,
-                       ActiveStatus=EmployeeHealthCardInsert.ActiveStatus
+                       ActiveStatus=EmployeeHealthCardInsert.ActiveStatus,
+                       id=EmployeeHealthCardInsert.id
                     });
                 }
             }

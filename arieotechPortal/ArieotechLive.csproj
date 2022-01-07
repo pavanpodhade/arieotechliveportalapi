@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\EmailSender.cs" />
+    <Compile Remove="Controllers\ForgotPassword.cs" />
+    <Compile Remove="Controllers\ForgotPasswordController.cs" />
+    <Compile Remove="Model\ForgotPassword.cs" />
+    <Compile Remove="Repository\ForgotPasswordRepository.cs" />
+    <Compile Remove="Repository\IForgotPasswordRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="C:\Users\PK\.nuget\packages\nlog.config\4.7.11\contentFiles\any\any\NLog.config" />
   </ItemGroup>
 
@@ -14,6 +23,7 @@
     <PackageReference Include="Dapper" Version="2.0.90" />
     <PackageReference Include="Grpc.Core.Api" Version="2.42.0" />
     <PackageReference Include="log4net" Version="2.0.13" />
+    <PackageReference Include="MailKit" Version="2.10.1" />
     <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.10" NoWarn="NU1605" />
