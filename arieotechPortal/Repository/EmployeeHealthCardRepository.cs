@@ -41,7 +41,7 @@ namespace ArieotechLive.Repository
 
             return employeeHealthCard;
         }
-        //GET EmployeeHealthCard By Name
+        // GET EmployeeHealthCard By Name
         public EmployeeHealthCard GetDepartmentByDepartmentName(string EmployeeHealthCardtName)
         {
             EmployeeHealthCard employeehealthcard = new EmployeeHealthCard();
@@ -71,8 +71,9 @@ namespace ArieotechLive.Repository
                         Last_Name = EmployeeHealthCardInsert.Last_Name,
                         Relation = EmployeeHealthCardInsert.Relation,
                         AdharCard_No = EmployeeHealthCardInsert.AdharCard_No,
-                       ActiveStatus=EmployeeHealthCardInsert.ActiveStatus,
-                       id=EmployeeHealthCardInsert.id
+                        ActiveStatus = EmployeeHealthCardInsert.ActiveStatus,
+                        id = EmployeeHealthCardInsert.Getid()
+
                     });
                 }
             }
@@ -89,14 +90,16 @@ namespace ArieotechLive.Repository
             {
                 using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
                 {
-                    conn.Execute("update EmployeeHealthCard set First_Name=@First_Name, Last_Name= @Last_Name, Relation= @Relation,AdharCard_No=@AdharCard_No where EmpHealthCardID=@EmployeeHealthCardID", new
+                    conn.Execute("update EmployeeHealthCard set First_Name=@First_Name, Last_Name= @Last_Name, Relation= @Relation, AdharCard_No= @AdharCard_No, id= @id, ActiveStatus= @ActiveStatus where EmpHealthCardID=@EmployeeHealthCardID", new
 
                     {
                         EmployeeHealthCardID = EmployeeHealthCardID,
                         First_Name = EmployeeHealthCardUpdate.First_Name,
                         Last_Name = EmployeeHealthCardUpdate.Last_Name,
                         Relation = EmployeeHealthCardUpdate.Relation,
-                        AdharCard_No = EmployeeHealthCardUpdate.AdharCard_No
+                        AdharCard_No = EmployeeHealthCardUpdate.AdharCard_No,
+                        id = EmployeeHealthCardUpdate.Getid(),
+                        ActiveStatus = EmployeeHealthCardUpdate.ActiveStatus
                     });
                 }
             }
@@ -116,6 +119,71 @@ namespace ArieotechLive.Repository
                     EmployeeHCID = EmployeeHealthCardID
                 });
             }
+        }
+
+        public EmployeeHealthCard GetEmployeeHealthCardByRelation(string Relation)
+        {
+
+            EmployeeHealthCard employeeHealthCard = new EmployeeHealthCard();
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+            {
+                employeeHealthCard = conn.Query<EmployeeHealthCard>("select * from [dbo].[EmployeeHealthCard] Where Relation = @relation", new
+                {
+                    relation = Relation,
+
+                }).FirstOrDefault();
+            }
+
+            return employeeHealthCard;
+
+        }
+
+        //public EmployeeHealthCard GetDepartmentByDepartmentName(int AdharCard_No)
+        //{
+        //    EmployeeHealthCard employeehealthcard = new EmployeeHealthCard();
+        //    using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+
+        //    {
+        //        employeehealthcard = conn.Query<EmployeeHealthCard>("SELECT * FROM EmployeeHealthCard Where AdharCard_No = @DEPTN", new
+        //        {
+        //            DEPTN = AdharCard_No,
+        //        }).FirstOrDefault();
+        //    }
+
+        //    return employeehealthcard;
+        //}
+
+        //public EmployeeHealthCard GetEmployeeHCByAdharCard_No(int AdharCard_No)
+        //{
+        //    EmployeeHealthCard employeehealthcard = new EmployeeHealthCard();
+        //    using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+
+        //    {
+        //        employeehealthcard = conn.Query<EmployeeHealthCard>("SELECT * FROM EmployeeHealthCard Where AdharCard_No = @DPTN", new
+        //        {
+        //            DPTN = AdharCard_No,
+        //        }).FirstOrDefault();
+        //    }
+
+        //    return employeehealthcard;
+
+        //}
+
+        public EmployeeHealthCard GetEmployeeHCByAdharCard_No(string AdharCard_No)
+        {
+            EmployeeHealthCard employeehealthcard = new EmployeeHealthCard();
+            using (IDbConnection conn = new SqlConnection(this.configuration.GetSection("ConnectionString").GetSection("DefaultConnection").Value))
+
+            {
+                employeehealthcard = conn.Query<EmployeeHealthCard>("SELECT * FROM EmployeeHealthCard Where AdharCard_No = @DPTN", new
+                {
+                    DPTN = AdharCard_No,
+                }).FirstOrDefault();
+            }
+
+            return employeehealthcard;
+
+
         }
 
     }
